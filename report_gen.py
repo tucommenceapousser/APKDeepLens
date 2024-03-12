@@ -2,7 +2,7 @@ import os
 import subprocess
 import re
 import json
-from xhtml2pdf import pisa
+# from xhtml2pdf import pisa
 import xml.etree.ElementTree as ET
 import datetime
 import logging
@@ -12,8 +12,9 @@ logging.basicConfig(level=logging.DEBUG, format="%(message)s")
     Title:      APKDeepLens
     Desc:       Android security insights in full spectrum.
     Author:     Deepanshu Gajbhiye
+    Modder:     Trhacknon
     Version:    1.0.0
-    GitHub URL: https://github.com/d78ui98/APKDeepLens
+    GitHub URL: https://github.com/tucommenceapousser/APKDeepLens
 """
 
 class util:
