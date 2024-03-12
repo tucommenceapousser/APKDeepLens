@@ -42,7 +42,7 @@ Restart the Termux to apply changes. Continue by installing the APKDeepLens usin
 
 
 ```
-git clone https://github.com/d78ui98/APKDeepLens.git
+git clone =https://github.com/tucommenceapousser/APKDeepLens.git
 cd /APKDeepLens
 python3 -m venv venv
 source venv/bin/activate
@@ -52,7 +52,7 @@ pip3 install -r requirements.txt
 To use APKDeepLens, you'll need to have Python 3.8 or higher installed on your system. You can then install APKDeepLens using the following command:
 ### For Linux
 ```
-git clone https://github.com/d78ui98/APKDeepLens/tree/main
+git clone https://github.com/tucommenceapousser/APKDeepLens/tree/main
 cd /APKDeepLens
 python3 -m venv venv
 source venv/bin/activate
@@ -61,7 +61,7 @@ python APKDeepLens.py --help
 ```
 ### For Windows
 ```
-git clone https://github.com/d78ui98/APKDeepLens/tree/main
+git clone https://github.com/tucommenceapousser/APKDeepLens/tree/main
 cd \APKDeepLens
 python3 -m venv venv
 .\venv\Scripts\activate
@@ -90,7 +90,7 @@ python3 APKDeepLens.py -apk file.apk -report
 ```
 ## Contributing
 
-We welcome contributions to the APKDeepLens project. If you have a feature request, bug report, or proposal, please open a new issue [here](https://github.com/d78ui98/APKDeepLens/issues).
+We welcome contributions to the APKDeepLens project. If you have a feature request, bug report, or proposal, please open a new issue [here](https://github.com/tucommenceapousser/APKDeepLens/issues).
 
 For those interested in contributing code, please follow the standard GitHub process.
 We'll review your contributions as quickly as possible :)
