@@ -29,6 +29,26 @@ APKDeepLens is a Python-based tool that performs various operations on APK files
 
 ## Installation
 
+Before installation process, make sure to update and upgrade, install java and set the environment variable using commands:
+
+```
+apt update
+apt upgrade
+pkg install openjdk-17
+export JAVA_HOME=/data/data/com.termux/files/usr/opt/openjdk
+```
+
+Restart the Termux to apply changes. Continue by installing the APKDeepLens using commands:
+
+
+```
+git clone https://github.com/d78ui98/APKDeepLens.git
+cd /APKDeepLens
+python3 -m venv venv
+source venv/bin/activate
+pip3 install -r requirements.txt
+```
+
 To use APKDeepLens, you'll need to have Python 3.8 or higher installed on your system. You can then install APKDeepLens using the following command:
 ### For Linux
 ```
