@@ -8,21 +8,24 @@ import time
 import xml.etree.ElementTree as ET
 from static_tools import sensitive_info_extractor, scan_android_manifest
 from report_gen import ReportGen
+import random
+from termcolor import colored
+from colorama import Fore, Back, Style, init
+
+init(autoreset=True)  # Initialiser Colorama
 
 """
     Title:      APKDeepLens
     Desc:       Android security insights in full spectrum.
     Author:     Deepanshu Gajbhiye
+    Modder:     trhacknon
     Version:    1.0.0
-    GitHub URL: https://github.com/d78ui98/APKDeepLens
+    GitHub URL: https://github.com/tucommenceapousser/APKDeepLens
 """
 
 logging.basicConfig(level=logging.ERROR, format="%(message)s")
 
 class util:
-    '''
-    A static class for which contain some useful variables and methods
-    '''
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
     OKCYAN = '\033[96m'
@@ -33,10 +36,20 @@ class util:
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
 
+    # Add rainbow colors
+    RAINBOW = [
+        '\033[95m\033[1m',  # Bold Pink
+        '\033[93m\033[1m',  # Bold Yellow
+        '\033[92m\033[1m',  # Bold Green
+        '\033[96m\033[1m',  # Bold Light Cyan
+        '\033[94m\033[1m',  # Bold Blue
+        '\033[91m\033[1m',  # Bold Red
+        '\033[35m\033[1m',  # Bold Magenta
+        '\033[36m\033[1m',  # Bold Cyan
+        '\033[33m\033[1m',  # Bold Orange
+        '\033[32m\033[1m',  # Bold Bright Green
+    ]
     def mod_print(text_output, color):
-        """
-        Better mod print. It gives the line number, file name in which error occured. 
-        """
         stack = traceback.extract_stack()
         filename, line_no, func_name, text = stack[-2]
         formatted_message = f"{filename}:{line_no}: {text_output}"
@@ -44,34 +57,99 @@ class util:
 
     def mod_log(text, color):
         logging.info(color + "{}".format(text) + util.ENDC)
-    
     def print_logo():
+            text_to_color = "TRHACKNON"
+
+            colored_text = ''.join([util.RAINBOW[i % len(util.RAINBOW)] + char + util.ENDC for i, char in enumerate(text_to_color)])
+
+            logo = f"""
+            {util.RAINBOW[0]} ████  █████  ██  ██    ( )                  (_ )                           {util.ENDC}
+            {util.RAINBOW[1]}██  ██ ██  ██ ██ ██    _| |  __     __  _ _   | |     __    ___    ___      {util.ENDC}
+            {util.RAINBOW[2]}██████ █████  ████   /'_` | /'_`\ /'_`\( '_`\ | |    /'_`\/' _ `\/',__)     {util.ENDC}
+            {util.RAINBOW[3]}██  ██ ██     ██ ██ ( (_| |(  __/(  __/| (_) )| |__ (  __/| ( ) |\__, \     {util.ENDC}
+            {util.RAINBOW[4]}██  ██ ██     ██  ██`\__,_)`\___)`\___)| ,__/'(____/`\___)(_) (_)(____/     {util.ENDC}
+            {util.RAINBOW[5]}                                       | |                                  {util.ENDC}
+            {util.RAINBOW[0]}                                       (_)                                  {util.ENDC}
+            {util.OKCYAN}                                              - Mod By {util.ENDC}{colored_text}
+            """
+            print(logo)
+
+
+
+def print_mixed_colors_spider(twinkling_duration=8):
+    spider = [
+        '    / _ \\ ',
+        '  \\_\\(_)/_/',
+        '   _//""\\_',
+        '    /   \\  '
+    ]
+
+    colors = [Fore.RED, Fore.YELLOW, Fore.GREEN, Fore.CYAN, Fore.BLUE, Fore.LIGHTMAGENTA_EX, Fore.WHITE,
+              Fore.LIGHTRED_EX, Fore.LIGHTYELLOW_EX, Fore.LIGHTGREEN_EX, Fore.LIGHTCYAN_EX, Fore.LIGHTBLUE_EX,
+              Fore.MAGENTA, Fore.LIGHTWHITE_EX, Fore.LIGHTBLACK_EX]
+
+    start_time = time.time()
+
+    while time.time() - start_time < twinkling_duration:
+        for line in spider:
+            colored_line = ''
+            for char in line:
+                colored_line += random.choice(colors) + char + Style.RESET_ALL
+            print(colored_line)
+        sys.stdout.flush()
+        time.sleep(0.1)
+        print("\033c")  # Effacer l'écran pour créer un effet de clignotement
+
+def twinkling_text(text, twinkling_duration=2):
+    colors = [Fore.RED, Fore.YELLOW, Fore.GREEN, Fore.CYAN, Fore.BLUE, Fore.LIGHTMAGENTA_EX, Back.LIGHTGREEN_EX,
+              Fore.WHITE, Back.LIGHTBLUE_EX, Fore.LIGHTRED_EX, Back.LIGHTYELLOW_EX, Fore.LIGHTYELLOW_EX,
+              Back.LIGHTCYAN_EX, Fore.LIGHTGREEN_EX, Back.LIGHTRED_EX, Fore.LIGHTBLACK_EX, Back.WHITE]
+
+    start_time = time.time()
+
+    while time.time() - start_time < twinkling_duration:
+        colored_text = [random.choice(colors) + char + Style.RESET_ALL for char in text]
+        sys.stdout.write(''.join(colored_text) + "\r")
+        sys.stdout.flush()
+        time.sleep(0.1)
+
+    print('')
+
+# Ajout de l'araignée clignotante dans la fonction fun_prompt
+def fun_prompt():
+    twinkling_text("APKDeepLens par TRHACKNON", twinkling_duration=4)
+    print_mixed_colors_spider(twinkling_duration=6)
+# Afficher l'araignée multicolore avec clignotement
+# fun_prompt()
+    def print_logo():
+        text_to_color = "TRHACKNON"
+
+        colored_text = ''.join([util.RAINBOW[i % len(util.RAINBOW)] + char + util.ENDC for i, char in enumerate(text_to_color)])
+
+        logo = f"""
+        {util.RAINBOW[0]} ████  █████  ██  ██    ( )                  (_ )                           {util.ENDC}
+        {util.RAINBOW[1]}██  ██ ██  ██ ██ ██    _| |  __     __  _ _   | |     __    ___    ___      {util.ENDC}
+        {util.RAINBOW[2]}██████ █████  ████   /'_` | /'_`\ /'_`\( '_`\ | |    /'_`\/' _ `\/',__)     {util.ENDC}
+        {util.RAINBOW[3]}██  ██ ██     ██ ██ ( (_| |(  __/(  __/| (_) )| |__ (  __/| ( ) |\__, \     {util.ENDC}
+        {util.RAINBOW[4]}██  ██ ██     ██  ██`\__,_)`\___)`\___)| ,__/'(____/`\___)(_) (_)(____/     {util.ENDC}
+        {util.RAINBOW[5]}                                       | |                                  {util.ENDC}
+        {util.RAINBOW[0]}                                       (_)                                  {util.ENDC}
+        {util.OKCYAN}                                              - Mod By {util.ENDC}{colored_text}
         """
-        Logo for APKDeepLens
-        """
-        logo =f"""                 
-{util.OKGREEN} ████  █████  ██  ██    ( )                  (_ )                           {util.ENDC}
-{util.OKGREEN}██  ██ ██  ██ ██ ██    _| |  __     __  _ _   | |     __    ___    ___      {util.ENDC}
-{util.OKGREEN}██████ █████  ████   /'_` | /'_`\ /'_`\( '_`\ | |    /'_`\/' _ `\/',__)     {util.ENDC}
-{util.OKGREEN}██  ██ ██     ██ ██ ( (_| |(  __/(  __/| (_) )| |__ (  __/| ( ) |\__, \     {util.ENDC}
-{util.OKGREEN}██  ██ ██     ██  ██`\__,_)`\___)`\___)| ,__/'(____/`\___)(_) (_)(____/     {util.ENDC}
-{util.OKGREEN}                                       | |                                  {util.ENDC}
-{util.OKGREEN}                                       (_)                                  {util.ENDC}
-{util.OKCYAN}                                              - Made By Deepanshu{util.ENDC}
-        """
-        print(logo)            
-                                                                                                    
+        print(logo)
+        
 def parse_args():
     """
     Parse command-line arguments.
     """
+    fun_prompt()
     util.print_logo()
-
     parser = argparse.ArgumentParser(
-        description="{BOLD}{GREEN}APKDeepLens:{ENDC} Android security insights in full spectrum. ".format(BOLD=util.BOLD, GREEN=util.OKCYAN, ENDC=util.ENDC),
-        epilog="For more information, visit our GitHub repository - https://github.com/d78ui98/APKDeepLens",
+        description="{BOLD}{GREEN}APKDeepLens:{ENDC} Android security insights in full spectrum.".format(BOLD=util.BOLD, GREEN=util.OKCYAN, ENDC=util.ENDC),
+        epilog="For more information, visit our GitHub repository - https://github.com/tucommenceapousser/APKDeepLens",
         formatter_class=argparse.RawTextHelpFormatter
     )
+    twinkling_text("We are ANONYMOUS. I'm TRHACKNON", twinkling_duration=4)
 
     parser.add_argument("-apk", metavar="APK", type=str, required=True,
                     help="Path to the APK file to be analyzed.")
